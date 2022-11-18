@@ -1588,47 +1588,69 @@ eval("\n\nvar required = __webpack_require__(/*! requires-port */ \"./node_modul
 
 /***/ }),
 
-/***/ "./src/constants.js":
-/*!**************************!*\
-  !*** ./src/constants.js ***!
-  \**************************/
+/***/ "./src/js/constants.js":
+/*!*****************************!*\
+  !*** ./src/js/constants.js ***!
+  \*****************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"serverAddress\": () => (/* binding */ serverAddress)\n/* harmony export */ });\nconst serverAddress = \"http://localhost:8080\";\n\n\n\n//# sourceURL=webpack://webpack/./src/constants.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"serverAddress\": () => (/* binding */ serverAddress)\n/* harmony export */ });\nconst serverAddress = \"http://localhost:8080\";\n\n\n\n//# sourceURL=webpack://webpack/./src/js/constants.js?");
 
 /***/ }),
 
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
+/***/ "./src/js/doc-functions.js":
+/*!*********************************!*\
+  !*** ./src/js/doc-functions.js ***!
+  \*********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _rest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./rest */ \"./src/rest.js\");\n/* harmony import */ var _sockets__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sockets */ \"./src/sockets.js\");\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n\n\n\n\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(()=>{\njquery__WEBPACK_IMPORTED_MODULE_0___default()(document).on('submit', () => {\n  const user = {\n    email: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#emailInput').val(),\n    name: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#userInput').val(),\n    password: jquery__WEBPACK_IMPORTED_MODULE_0___default()('#passwordInput').val()\n  }\n  ;(0,_rest__WEBPACK_IMPORTED_MODULE_1__.createUser)(user);\n});\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(\"#send-btn\").on(\"click\",()=>{\n  console.log(\"message\");\n  (0,_sockets__WEBPACK_IMPORTED_MODULE_2__.sendPlainMessage)(\"MyUser\", jquery__WEBPACK_IMPORTED_MODULE_0___default()('#message-input').val())\n})\n})\n;(0,_sockets__WEBPACK_IMPORTED_MODULE_2__.openConnection)();\n\n\n//# sourceURL=webpack://webpack/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"update\": () => (/* binding */ update)\n/* harmony export */ });\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _sockets__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sockets */ \"./src/js/sockets.js\");\n\n\n\n\njquery__WEBPACK_IMPORTED_MODULE_0___default()(() => {\n\n    var input = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#main-doc');\n\n    input.on('keydown', (event) => {\n        var key = event.keyCode || event.charCode;\n        if (key == 8 || key == 46) {\n            console.log(\"deleting: \" + input.val().substring(input.prop(\"selectionStart\"),\n                input.prop(\"selectionEnd\")));\n        }\n\n    });\n    input.on(\"input\", (event) => {\n        let end = input.prop(\"selectionEnd\");\n        (0,_sockets__WEBPACK_IMPORTED_MODULE_1__.addUpdate)(jquery__WEBPACK_IMPORTED_MODULE_0___default()('#userInput').val(), event.originalEvent.data, end-1)\n    })\n})\n\nconst update = (updateData) => {\n    let textArea = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#main-doc');\n    let user = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#userInput').val();\n    let start = textArea.prop(\"selectionStart\");\n    if (user != updateData.user) {\n        let text = textArea.val();\n        text = text.substring(0, updateData.position) + updateData.content + text.substring(updateData.position, text.length);\n        textArea.val(text);\n        if (updateData.position < start) {\n            start++;\n            textArea[0].setSelectionRange(start, start);\n        }\n    }\n}\n\n\n\n//# sourceURL=webpack://webpack/./src/js/doc-functions.js?");
 
 /***/ }),
 
-/***/ "./src/rest.js":
-/*!*********************!*\
-  !*** ./src/rest.js ***!
-  \*********************/
+/***/ "./src/js/index.js":
+/*!*************************!*\
+  !*** ./src/js/index.js ***!
+  \*************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"createUser\": () => (/* binding */ createUser)\n/* harmony export */ });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n\n\nconst createUser = (user) => {\n    fetch(_constants__WEBPACK_IMPORTED_MODULE_0__.serverAddress + \"/user\", {\n      method: 'POST',\n      body: JSON.stringify({ name: user.name, email: user.email, password: user.password }),\n      headers: {\n        'Content-Type': 'application/json'\n      }\n    })\n  }\n\n\n\n//# sourceURL=webpack://webpack/./src/rest.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var bootstrap__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.esm.js\");\n/* harmony import */ var bootstrap_dist_css_bootstrap_min_css__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! bootstrap/dist/css/bootstrap.min.css */ \"./node_modules/bootstrap/dist/css/bootstrap.min.css\");\n/* harmony import */ var _signup__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./signup */ \"./src/js/signup.js\");\n/* harmony import */ var _rest__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./rest */ \"./src/js/rest.js\");\n/* harmony import */ var _sockets__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./sockets */ \"./src/js/sockets.js\");\n\n\n\n\n\n\n\n\nconsole.log(\"main\");\njquery__WEBPACK_IMPORTED_MODULE_0___default()(() => {\n  jquery__WEBPACK_IMPORTED_MODULE_0___default()(\"#signup\").on(\"submit\", function (event) {\n    event.preventDefault();\n    console.log(\"registration\");\n    const user = {\n      email: jquery__WEBPACK_IMPORTED_MODULE_0___default()(\".form-floating #email\").val(),\n      name: jquery__WEBPACK_IMPORTED_MODULE_0___default()(\".form-floating #name\").val(),\n      password: jquery__WEBPACK_IMPORTED_MODULE_0___default()(\".form-floating #password\").val(),\n    };\n    console.log(user);\n    (0,_rest__WEBPACK_IMPORTED_MODULE_4__.createUser)(user);\n  });\n});\n\n// openConnection();\n\n\n//# sourceURL=webpack://webpack/./src/js/index.js?");
 
 /***/ }),
 
-/***/ "./src/sockets.js":
+/***/ "./src/js/rest.js":
 /*!************************!*\
-  !*** ./src/sockets.js ***!
+  !*** ./src/js/rest.js ***!
   \************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"openConnection\": () => (/* binding */ openConnection),\n/* harmony export */   \"sendPlainMessage\": () => (/* binding */ sendPlainMessage)\n/* harmony export */ });\n/* harmony import */ var sockjs_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sockjs-client */ \"./node_modules/sockjs-client/lib/entry.js\");\n/* harmony import */ var sockjs_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sockjs_client__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _stomp_stompjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @stomp/stompjs */ \"./node_modules/@stomp/stompjs/esm6/compatibility/stomp.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n/* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./constants */ \"./src/constants.js\");\n\n\n\n\n\n\nlet stompClient;\nlet messages = [];\nconst socketFactory = () => {\n    return new sockjs_client__WEBPACK_IMPORTED_MODULE_0__(_constants__WEBPACK_IMPORTED_MODULE_2__.serverAddress + '/ws');\n  }\n  \n  const onMessageReceived = (payload) => {\n    var message = JSON.parse(payload.body);\n    messages.push(message)\n    let textArea = jquery__WEBPACK_IMPORTED_MODULE_1___default()('#main-chat');\n    textArea.val(textArea.val()+\"\\n\"+message.sender + \": \" + message.content);\n    console.log(message)\n  }\n  const onConnected = ()=> {\n    // Subscribe to the Public Topic\n    stompClient.subscribe('/topic/mainChat', onMessageReceived);\n  \n    // Tell your username to the server\n    stompClient.send(\"/app/hello\", [],\n      JSON.stringify({ name: \"Default user\" })\n    )\n  }\n\n  const openConnection = () =>{\n    const socket = socketFactory();\n    stompClient = _stomp_stompjs__WEBPACK_IMPORTED_MODULE_3__.Stomp.over(socket);\n    stompClient.connect({}, onConnected);\n  }\n\n  const sendPlainMessage = (user, message) =>{\n    stompClient.send(\"/app/plain\",[],JSON.stringify({\n        sender:user,\n        content:message\n    }))\n  }\n\n\n\n  \n\n//# sourceURL=webpack://webpack/./src/sockets.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"createUser\": () => (/* binding */ createUser)\n/* harmony export */ });\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ \"./src/js/constants.js\");\n\n\nconst createUser = (user) => {\n  fetch(_constants__WEBPACK_IMPORTED_MODULE_0__.serverAddress + \"/auth/signup\", {\n    method: \"POST\",\n    body: JSON.stringify({ name: user.name, email: user.email, password: user.password }),\n    headers: {\n      \"Content-Type\": \"application/json\",\n    },\n  })\n    .then(async (response) => {\n      // const isJson = response.headers.get(\"content-type\")?.includes(\"application/json\");\n      // const data = isJson && (await response.json());\n      // if (!response.ok) {\n      //   const error = (data && data.message) || response.status;\n      //   $(\".modal-title\").text(\"Registration failed\");\n      //   $(\".modal-body\").text(error);\n      //   return Promise.reject(error);\n      // }\n      // $(\".modal-title\").text(\"Registration success\");\n      // $(\".modal-body\").text(\"Please log in!\");\n    })\n    .catch((error) => {\n      console.error(\"error: \", error);\n    });\n};\n\n\n\n\n//# sourceURL=webpack://webpack/./src/js/rest.js?");
+
+/***/ }),
+
+/***/ "./src/js/signup.js":
+/*!**************************!*\
+  !*** ./src/js/signup.js ***!
+  \**************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _rest__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./rest */ \"./src/js/rest.js\");\n\n\n\n//# sourceURL=webpack://webpack/./src/js/signup.js?");
+
+/***/ }),
+
+/***/ "./src/js/sockets.js":
+/*!***************************!*\
+  !*** ./src/js/sockets.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"addUpdate\": () => (/* binding */ addUpdate),\n/* harmony export */   \"openConnection\": () => (/* binding */ openConnection)\n/* harmony export */ });\n/* harmony import */ var sockjs_client__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! sockjs-client */ \"./node_modules/sockjs-client/lib/entry.js\");\n/* harmony import */ var sockjs_client__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(sockjs_client__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _stomp_stompjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @stomp/stompjs */ \"./node_modules/@stomp/stompjs/esm6/compatibility/stomp.js\");\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/js/constants.js\");\n/* harmony import */ var _doc_functions__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./doc-functions */ \"./src/js/doc-functions.js\");\n\n\n\n\n\nlet stompClient;\nconst socketFactory = () => {\n  return new sockjs_client__WEBPACK_IMPORTED_MODULE_0__(_constants__WEBPACK_IMPORTED_MODULE_1__.serverAddress + \"/ws\");\n};\n\nconst onMessageReceived = (payload) => {\n  var message = JSON.parse(payload.body);\n  console.log(message);\n  (0,_doc_functions__WEBPACK_IMPORTED_MODULE_2__.update)(message);\n};\n\nconst onConnected = () => {\n  stompClient.subscribe(\"/topic/updates\", onMessageReceived);\n  stompClient.send(\"/app/hello\", [], JSON.stringify({ name: \"Default user\" }));\n};\n\nconst openConnection = () => {\n  const socket = socketFactory();\n  stompClient = _stomp_stompjs__WEBPACK_IMPORTED_MODULE_3__.Stomp.over(socket);\n  stompClient.connect({}, onConnected);\n};\n\nconst addUpdate = (user, content, position) => {\n  sendUpate(user, \"APPEND\", content, position);\n};\n\nconst sendUpate = (user, type, content, position) => {\n  stompClient.send(\n    \"/app/update\",\n    [],\n    JSON.stringify({\n      user: user,\n      type: type,\n      content: content,\n      position: position,\n    })\n  );\n};\n\n\n\n\n//# sourceURL=webpack://webpack/./src/js/sockets.js?");
 
 /***/ }),
 
@@ -1926,7 +1948,7 @@ eval("module.exports = \"data:image/svg+xml,%3csvg xmlns=%27http://www.w3.org/20
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
+/******/ 	var __webpack_exports__ = __webpack_require__("./src/js/index.js");
 /******/ 	
 /******/ })()
 ;
