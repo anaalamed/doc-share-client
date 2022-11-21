@@ -13,9 +13,30 @@
 h1,
 h2 {
   text-align: center;
-  margin: 1rem auto 3rem;
+  font-size: 2rem;
 }
 
 body {
   background: #4070f4;
+
+  header {
+    height: 15vh;
+    padding: 1rem 0;
+  }
+
+  .container {
+    height: 80vh;
+  }
+
+  footer {
+    background: #fff;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      text-align: center;
+    }
+  }
 }
