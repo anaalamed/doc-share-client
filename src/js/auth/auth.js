@@ -1,7 +1,8 @@
 import $ from "jquery";
-import { createUser } from "../rest";
+import { createUser, loginUser } from "./rest";
 
 $(() => {
+  // registration
   $("#signup").on("submit", function (event) {
     console.log("registration");
     event.preventDefault();
@@ -14,5 +15,19 @@ $(() => {
 
     console.log(user);
     createUser(user);
+  });
+
+  // login
+  $("#login").on("submit", function (event) {
+    console.log("login");
+    event.preventDefault();
+
+    const user = {
+      email: $(".form-floating #email").val(),
+      password: $(".form-floating #password").val(),
+    };
+
+    console.log(user);
+    loginUser(user);
   });
 });

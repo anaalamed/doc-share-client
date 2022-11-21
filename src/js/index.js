@@ -1,7 +1,7 @@
 import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./auth/signup";
+import "./auth/auth";
 import "./share";
 import { openConnection } from "./sockets";
 import "../styles/_custom.scss";
