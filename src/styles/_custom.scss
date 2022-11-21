@@ -1,4 +1,13 @@
 @import "./forms.scss";
+/*Google Fonts- Poppins*/
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
 
 h1,
 h2 {
@@ -7,5 +16,5 @@ h2 {
 }
 
 body {
-  background: whitesmoke;
+  background: #4070f4;
 }
