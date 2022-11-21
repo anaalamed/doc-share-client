@@ -5,7 +5,9 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack serve"
+    "start": "webpack serve",
+    "build": "npx webpack",
+    "deploy": "firebase deploy"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +22,10 @@
   "dependencies": {
     "@stomp/stompjs": "^6.1.2",
     "bootstrap": "^5.2.1",
+    "html-webpack-plugin": "^5.5.0",
     "jquery": "^3.6.1",
+    "sass": "^1.56.1",
+    "sass-loader": "^13.2.0",
     "sockjs": "^0.3.24",
     "sockjs-client": "^1.6.1",
     "websocket": "^1.0.34"

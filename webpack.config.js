@@ -1,26 +1,60 @@
-const path = require('path');
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-    entry: './src/index.js',
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist'),
-    },
-    mode: "development",
-    module: {
-        rules: [
-          {
-            test: /\.css$/,
-            use: ['style-loader', 'css-loader']
-          }
-        ]
+  entry: "./src/js/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  mode: "development",
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
-    devServer: {
-        static: {
-            directory: path.join(__dirname, 'dist'),
-        },
-        compress: true,
-        port: 9000,
-    }
-};
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          "style-loader",
+          "css-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              // Prefer `dart-sass`
+              implementation: require("sass"),
+            },
+          },
+        ],
+      },
+    ],
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    compress: true,
+    port: 9000,
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      inject: "body",
+      template: "./dist/index.html",
+      filename: "index.html",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+      },
+    }),
 
+    new HtmlWebpackPlugin({
+      template: "./dist/signup.html",
+      filename: "signup.html",
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+      },
+    }),
+  ],
+};
