@@ -13,9 +13,19 @@
 h1,
 h2 {
   text-align: center;
-  margin: 1rem auto 3rem;
+  font-size: 2rem;
+  // margin: 1rem auto 1rem;
 }
 
 body {
   background: #4070f4;
+
+  header {
+    height: 12vh;
+    padding: 1rem 0;
+  }
+
+  .container {
+    height: 88vh;
+  }
 }

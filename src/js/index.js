@@ -7,5 +7,6 @@ import { openConnection } from "./sockets";
 import "../styles/_custom.scss";
 
 console.log("index.js file");
+console.log("------------------------------------------");
 
 openConnection();

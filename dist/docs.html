@@ -4,17 +4,29 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Shared DoCs</title>
+    <script defer="defer" src="main.js"></script>
   </head>
   <body>
-    <div class="container">
-      <div class="col-12">
-        <h2>Docs</h2>
-          <a class="nav-link" href="/share.html">Share</a>
-        <div class="col-9">
-          <textarea class="form-control" id="main-doc" rows="20"></textarea>
+    <header>
+      <h1>Welcome to Docs Shared App</h1>
+      <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav"><a class="nav-link active" href="signup.html">Sign up</a> <a class="nav-link" href="/login.html">Log in</a> <a class="nav-link" href="/docs.html">Docs</a></div>
+          </div>
         </div>
+      </nav>
+    </header>
 
+    <div class="container">
+      <!-- <div class="col-12"> -->
+      <h2>Docs</h2>
+      <!-- <a class="nav-link" href="/share.html">Share</a> -->
+      <div class="col-12">
+        <textarea class="form-control" id="main-doc" rows="30"></textarea>
       </div>
+      <!-- </div> -->
     </div>
   </body>
 </html>
