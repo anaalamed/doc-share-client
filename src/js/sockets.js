@@ -36,6 +36,7 @@ const addUpdate = (user, content, startPosition, endPosition) => {
   sendUpdate(user, "APPEND", content, startPosition, endPosition);
 };
 
+//TODO: add documentID to sent variable
 const sendUpdate = (user, type, content, startPosition, endPosition) => {
   console.log("---- sendUpdate ----");
   stompClient.send(

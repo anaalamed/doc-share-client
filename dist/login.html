@@ -4,6 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Shared Dcos</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css"
+      rel="stylesheet"
+    />
     <script defer="defer" src="main.js"></script>
   </head>
   <body>
@@ -11,8 +15,25 @@
       <div class="form col-5">
         <h2>Log In</h2>
         <form id="login">
-          <div class="form-floating mb-5 col-8"><input type="email" class="form-control" id="email" placeholder="name@example.com" /> <label for="floatingInput">Email address</label></div>
-          <div class="form-floating mb-5 col-8"><input type="password" class="form-control" id="password" placeholder="Password" /> <label for="floatingPassword">Password</label></div>
+          <div class="form-floating mb-5 col-8">
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="name@example.com"
+            />
+            <label for="floatingInput">Email address</label>
+          </div>
+          <div class="form-floating mb-5 col-8">
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+              placeholder="Password"
+            />
+            <label for="floatingPassword">Password</label>
+            <i class="bx bx-hide eye-icon"></i>
+          </div>
           <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
