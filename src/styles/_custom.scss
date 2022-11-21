@@ -14,18 +14,29 @@ h1,
 h2 {
   text-align: center;
   font-size: 2rem;
-  // margin: 1rem auto 1rem;
 }
 
 body {
   background: #4070f4;
 
   header {
-    height: 12vh;
+    height: 15vh;
     padding: 1rem 0;
   }
 
   .container {
-    height: 88vh;
+    height: 80vh;
+  }
+
+  footer {
+    background: #fff;
+    height: 5vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    div {
+      text-align: center;
+    }
   }
 }
