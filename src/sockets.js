@@ -1,45 +1,54 @@
-import * as SockJS from 'sockjs-client';
-import { Stomp } from '@stomp/stompjs';
+import * as SockJS from "sockjs-client";
+import { Stomp } from "@stomp/stompjs";
 
+import { serverAddress } from "./constants";
+import { update } from "./doc-functions";
 
-
-import { serverAddress } from "./constants"
-import { update } from './doc-functions';
 let stompClient;
 const socketFactory = () => {
-    return new SockJS(serverAddress + '/ws');
-}
+  return new SockJS(serverAddress + "/ws");
+};
 
 const onMessageReceived = (payload) => {
-    var message = JSON.parse(payload.body);
-    console.log(message);
-    update(message);
-}
+  console.log("---- onMessageReceived ----");
+  var message = JSON.parse(payload.body);
+  console.log("---- onMessageReceived2 before update ----");
+
+  console.log(message);
+  update(message);
+};
 
 const onConnected = () => {
-    stompClient.subscribe('/topic/updates', onMessageReceived);
-    stompClient.send("/app/hello", [],
-        JSON.stringify({ name: "Default user" })
-    )
-}
+  console.log("---- onConnected ----");
+  stompClient.subscribe("/topic/updates", onMessageReceived);
+  stompClient.send("/app/hello", [], JSON.stringify({ name: "Default user" }));
+};
 
 const openConnection = () => {
-    const socket = socketFactory();
-    stompClient = Stomp.over(socket);
-    stompClient.connect({}, onConnected);
-}
+  console.log("---- openConnection ----");
+  const socket = socketFactory();
+  stompClient = Stomp.over(socket);
+  stompClient.connect({}, onConnected);
+};
 
-const addUpdate = (user, content, position) => {
-    sendUpate(user, "APPEND", content, position)
-}
+const addUpdate = (user, content, startPosition, endPosition) => {
+  console.log("---- addUpdate ----");
+  sendUpdate(user, "APPEND", content, startPosition, endPosition);
+};
 
-const sendUpate = (user, type, content, position) => {
-    stompClient.send("/app/update", [], JSON.stringify({
-        user: user,
-        type: type,
-        content: content,
-        position: position
-    }))
-}
+const sendUpdate = (user, type, content, startPosition, endPosition) => {
+  console.log("---- sendUpdate ----");
+  stompClient.send(
+    "/app/update",
+    [],
+    JSON.stringify({
+      user: user,
+      type: type,
+      content: content,
+      startPosition: startPosition,
+      endPosition: endPosition,
+    })
+  );
+};
 
-export { openConnection, addUpdate }
+export { openConnection, addUpdate };
