@@ -1,4 +1,5 @@
 import { serverAddress } from "./constants";
+import $ from "jquery";
 
 const createUser = (user) => {
   fetch(serverAddress + "/auth/signup", {
@@ -9,16 +10,19 @@ const createUser = (user) => {
     },
   })
     .then(async (response) => {
-      // const isJson = response.headers.get("content-type")?.includes("application/json");
-      // const data = isJson && (await response.json());
-      // if (!response.ok) {
-      //   const error = (data && data.message) || response.status;
-      //   $(".modal-title").text("Registration failed");
-      //   $(".modal-body").text(error);
-      //   return Promise.reject(error);
-      // }
-      // $(".modal-title").text("Registration success");
-      // $(".modal-body").text("Please log in!");
+      const isJson = response.headers.get("content-type")?.includes("application/json");
+      const data = isJson && (await response.json());
+      console.log(data);
+      const error = (data && data.message) || response.status;
+
+      if (!data.success) {
+        $(".modal-title").text("Registration failed");
+        $(".modal-body").text(error);
+        return Promise.reject(error);
+      }
+
+      $(".modal-title").text("Registration success");
+      $(".modal-body").text("Please check your email and confirm your registration!");
     })
     .catch((error) => {
       console.error("error: ", error);
