@@ -1,0 +1,29 @@
+.container.share {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+  min-height: 100vh;
+  background-color: #fff;
+}
+
+.h2 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #232836;
+  text-align: center;
+}
+.sharediv {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  column-gap: 30px;
+  min-height: 100vh;
+  background-color: #fff;
+}
