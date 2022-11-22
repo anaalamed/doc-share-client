@@ -10,7 +10,7 @@ import "../styles/_custom.scss";
 console.log("index.js file");
 console.log("------------------------------------------");
 
-openConnection();
+// openConnection();
 
 // insert dynamic html at different html files
 $(function () {
@@ -45,5 +45,3 @@ pwShowHide.forEach((eyeIcon) => {
 // $("#myModal").on("shown.bs.modal", function () {
 //   $("#myInput").trigger("focus");
 // });
-
-// ------------------------------------------------------

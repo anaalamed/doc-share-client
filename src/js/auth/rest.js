@@ -17,7 +17,7 @@ const createUser = (user) => {
 
       if (!data.success) {
         $(".modal-title").text("Registration failed");
-        $(".modal-body").text(error);
+        $(".modal-body").text("Please try again later");
         return Promise.reject(error);
       }
 

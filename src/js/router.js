@@ -7,6 +7,7 @@ $(document).ready(() => {
   document.addEventListener("click", (e) => {
     const { target } = e;
     if (!target.matches("div a")) {
+      e.preventDefault();
       return;
     }
     e.preventDefault();
@@ -44,6 +45,7 @@ $(document).ready(() => {
 
   // create a function that watches the url and calls the urlLocationHandler
   const urlRoute = async (event) => {
+    console.log("urlRoute");
     event = event || window.event; // get window.event if event argument not provided
     event.preventDefault();
     // window.history.pushState(state, unused, target link);
@@ -54,6 +56,7 @@ $(document).ready(() => {
   // create a function that handles the url location
   const urlLocationHandler = async () => {
     const location = window.location.pathname; // get the url path
+    console.log(location);
 
     if (location.length == 0) {
       location = "/";
