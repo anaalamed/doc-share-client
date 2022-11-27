@@ -2,8 +2,8 @@ import $ from "jquery";
 import { createUser, loginUser } from "./rest";
 
 $(() => {
-  // registration
-  $("#signup").on("submit", function (event) {
+  // -------------------- registration -------------------------------
+  $(document).on("submit", "#signup", function (event) {
     console.log("registration");
     event.preventDefault();
 
@@ -18,7 +18,7 @@ $(() => {
   });
 
   // login
-  $("#login").on("submit", function (event) {
+  $(document).on("submit", "#login", function (event) {
     console.log("login");
     event.preventDefault();
 

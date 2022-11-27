@@ -1,5 +1,6 @@
 @import "./forms.scss";
 @import "./share.scss";
+@import "./docs.scss";
 /*Google Fonts- Poppins*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;1,600&display=swap");
 
@@ -17,15 +18,28 @@ h2 {
 }
 
 body {
-  background: #4070f4;
+  background: #d5e1ce;
 
   header {
     height: 15vh;
-    padding: 1rem 0;
+    // padding: 1rem 0;
+
+    nav.navbar.navbar-expand-lg {
+      // background: #7895b2;
+      background: #fff;
+    }
   }
 
   .container {
     height: 80vh;
+    width: auto;
+    margin: auto;
+
+    #content {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
   }
 
   footer {
@@ -34,6 +48,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    // background: #7895b2;
+    background: #fff;
 
     div {
       text-align: center;

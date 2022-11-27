@@ -2,6 +2,7 @@ import $ from "jquery";
 import "bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./auth/auth";
+import "./router";
 import "./share";
 import { openConnection } from "./sockets";
 import "../styles/_custom.scss";
@@ -9,7 +10,7 @@ import "../styles/_custom.scss";
 console.log("index.js file");
 console.log("------------------------------------------");
 
-openConnection();
+// openConnection();
 
 // insert dynamic html at different html files
 $(function () {
@@ -41,6 +42,6 @@ pwShowHide.forEach((eyeIcon) => {
 });
 
 // modal
-$("#myModal").on("shown.bs.modal", function () {
-  $("#myInput").trigger("focus");
-});
+// $("#myModal").on("shown.bs.modal", function () {
+//   $("#myInput").trigger("focus");
+// });

@@ -48,13 +48,13 @@ module.exports = {
       },
     }),
 
-    new HtmlWebpackPlugin({
-      template: "./dist/signup.html",
-      filename: "signup.html",
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: "./dist/signup.html",
+    //   filename: "signup.html",
+    //   minify: {
+    //     removeComments: true,
+    //     collapseWhitespace: true,
+    //   },
+    // }),
   ],
 };
