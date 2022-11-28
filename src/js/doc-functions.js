@@ -48,6 +48,8 @@ var $url = $(location).attr("href");
 
 const copyLink = () => {
   $(".clipboard").on("click", function () {
+    console.log("on copyLink");
+
     $("body").append($temp);
     $temp.val($url).select();
     document.execCommand("copy");
@@ -56,4 +58,18 @@ const copyLink = () => {
   });
 };
 
-export { update, copyLink };
+const importFile = () => {
+  $(".import").on("click", function () {
+    console.log("on import");
+    //TODO
+  });
+};
+
+const exportFile = () => {
+  $(".export").on("click", function () {
+    console.log("on export");
+    //TODO
+  });
+};
+
+export { update, copyLink, importFile, exportFile };
