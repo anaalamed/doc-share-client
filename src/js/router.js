@@ -1,6 +1,6 @@
 import $ from "jquery";
 import { initLogin } from "./auth/auth";
-import { update, copyLink } from "./doc-functions";
+import { update, copyLink, importFile, exportFile } from "./doc-functions";
 import { newSharedUser, shareViaEmail, updatePermission } from "./share";
 
 $(document).ready(() => {
@@ -46,7 +46,9 @@ $(document).ready(() => {
       template: "pages/docs.html",
       title: "Docs | " + urlPageTitle,
       description: "This is the docs page",
-      copy: () => {
+      docs: () => {
+        exportFile();
+        importFile();
         copyLink();
         update();
       },
@@ -57,6 +59,8 @@ $(document).ready(() => {
       description: "This is the share page",
       share: () => {
         newSharedUser();
+        shareViaEmail();
+        updatePermission();
       },
     },
   };
@@ -91,7 +95,7 @@ $(document).ready(() => {
 
     if (route.init) route.init();
     if (route.share) route.share();
-    if (route.copy) route.copy();
+    if (route.docs) route.docs();
 
     // set the title of the document to the title of the route
     document.title = route.title;

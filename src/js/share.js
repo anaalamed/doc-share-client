@@ -38,18 +38,16 @@ const newSharedUser = () => {
   });
 };
 
+const shareViaEmail = () => {
+  $(document).on("click", "#shareViaEmail", () => {
+    //TODO
+  });
+};
 
+const updatePermission = () => {
+  $(document).on("click", "#updatePermissionBtn", () => {
+    //TODO
+  });
+};
 
-// const shareViaEmail = () => {
-//   $(document).on("click", "#shareViaEmail", () => {
-//     //TODO
-//   });
-// };
-
-// const updatePermission = () => {
-//   $(document).on("click", "#updatePermissionBtn", () => {
-//     //TODO
-//   });
-// };
-
-export { newSharedUser };
+export { newSharedUser, shareViaEmail, updatePermission };
