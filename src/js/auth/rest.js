@@ -30,6 +30,9 @@ const createUser = (user) => {
 };
 
 const loginUser = (user) => {
+  console.log("----- in loginUser() -----");
+  console.log(user);
+  
   fetch(serverAddress + "/auth/login", {
     method: "POST",
     body: JSON.stringify({ email: user.email, password: user.password }),

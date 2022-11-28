@@ -9,6 +9,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
+  color: #4a4a4e;
 }
 
 h1,
@@ -43,14 +44,11 @@ body {
   }
 
   footer {
-    background: #fff;
     height: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    // background: #7895b2;
-    background: #fff;
-
+    background: #d5e1ce;
     div {
       text-align: center;
     }

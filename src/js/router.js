@@ -1,4 +1,5 @@
 import $ from "jquery";
+import { initLogin } from "./auth/auth";
 
 $(document).ready(() => {
   const urlPageTitle = "Shared Docs";
@@ -35,6 +36,7 @@ $(document).ready(() => {
       template: "pages/login.html",
       title: "Log In | " + urlPageTitle,
       description: "This is the log in page",
+      init: () => {initLogin();}
     },
     "/docs": {
       template: "pages/docs.html",
@@ -68,6 +70,8 @@ $(document).ready(() => {
     const html = await fetch(route.template).then((response) => response.text());
     // set the content of the content div to the html
     document.getElementById("content").innerHTML = html;
+    
+    if(route.init) route.init();
     // set the title of the document to the title of the route
     document.title = route.title;
     // set the description of the document to the description of the route
