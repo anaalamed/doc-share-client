@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { addUpdate } from "./sockets";
+import { addUpdate, deleteUpdate } from "./sockets";
 
 $(() => {
   var input = $("#main-doc");
@@ -13,8 +13,10 @@ $(() => {
             .val()
             .substring(input.prop("selectionStart"), input.prop("selectionEnd"))
       );
+      deleteUpdate($("#userInput").val(), start, end - 1);
     }
   });
+
   input.on("input", (event) => {
     let start = input.prop("selectionStart");
     let end = input.prop("selectionEnd");
