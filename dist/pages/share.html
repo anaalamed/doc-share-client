@@ -1,0 +1,25 @@
+<div class="container share">
+  <div class="share_box">
+        <h2>Share</h2>
+        <div class="share_button">
+        <button id="copyLink" type="button" class="btn btn-info">Copy Link</button>
+        <button id="shareViaEmail" type="button" class="btn btn-info">Share via email</button>
+        </div>
+        <div id="userList">
+        <input id="input-user" type="email" placeholder="enter Email" />
+        <button id="add-user-btn" type="button">Add user</button>
+        </div>
+        <div>
+        <ul id="users-table"></ul>
+        </div>
+        <div>
+        <label for="permission">please select permission</label>
+        <select name="permission">
+            <option value="OWNER">Owner</option>
+            <option value="EDITOR">Editor</option>
+            <option value="VIEWER" selected>Viewer</option>
+        </select>
+        <button id="updatePermissionBtn" type="button">Update</button>
+        </div>
+  </div>
+</div>

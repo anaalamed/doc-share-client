@@ -1,5 +1,6 @@
 import $ from "jquery";
 import { initLogin } from "./auth/auth";
+import { update, copyLink } from "./doc-functions";
 
 $(document).ready(() => {
   const urlPageTitle = "Shared Docs";
@@ -36,12 +37,26 @@ $(document).ready(() => {
       template: "pages/login.html",
       title: "Log In | " + urlPageTitle,
       description: "This is the log in page",
-      init: () => {initLogin();}
+      init: () => {
+        initLogin();
+      },
     },
     "/docs": {
       template: "pages/docs.html",
       title: "Docs | " + urlPageTitle,
       description: "This is the docs page",
+      copy: () => {
+        copyLink();
+        update();
+      },
+    },
+    "/share": {
+      template: "pages/share.html",
+      title: "Share | " + urlPageTitle,
+      description: "This is the share page",
+      share: () => {
+        newSharedUser();
+      },
     },
   };
 
@@ -67,11 +82,16 @@ $(document).ready(() => {
     const route = urlRoutes[location] || urlRoutes["404"];
     // get the html from the template
 
-    const html = await fetch(route.template).then((response) => response.text());
+    const html = await fetch(route.template).then((response) =>
+      response.text()
+    );
     // set the content of the content div to the html
     document.getElementById("content").innerHTML = html;
-    
-    if(route.init) route.init();
+
+    if (route.init) route.init();
+    if (route.share) route.share();
+    if (route.copy) route.copy();
+
     // set the title of the document to the title of the route
     document.title = route.title;
     // set the description of the document to the description of the route
