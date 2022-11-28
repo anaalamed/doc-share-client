@@ -1,6 +1,7 @@
 import $ from "jquery";
 import { initLogin } from "./auth/auth";
 import { update, copyLink } from "./doc-functions";
+import { newSharedUser, shareViaEmail, updatePermission } from "./share";
 
 $(document).ready(() => {
   const urlPageTitle = "Shared Docs";
