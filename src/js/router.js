@@ -1,7 +1,24 @@
 import $ from "jquery";
-import { initLogin } from "./auth/auth";
+import axios from "axios";
+
+import { initLogin, initRegistration } from "./auth/auth";
 import { update, copyLink, importFile, exportFile } from "./doc-functions";
-import { newSharedUser, shareViaEmail, updatePermission } from "./share";
+import {
+  newSharedUser,
+  updatePermission,
+  updatePermissionAndNotify,
+} from "./share";
+import { getChildren, initImport } from "./folder";
+
+const redirect = (page) => {
+  window.history.pushState({}, "", page);
+  handleLocation();
+};
+
+const redirectToDoc = (page, docId) => {
+  window.history.pushState({}, "", page);
+  handleLocationWithDoc(docId);
+};
 
 $(document).ready(() => {
   const urlPageTitle = "Shared Docs";
@@ -40,27 +57,37 @@ $(document).ready(() => {
       description: "This is the log in page",
       init: () => {
         initLogin();
+        initRegistration();
       },
     },
     "/docs": {
       template: "pages/docs.html",
       title: "Docs | " + urlPageTitle,
       description: "This is the docs page",
-      docs: () => {
+      init: () => {
         exportFile();
         importFile();
         copyLink();
         update();
       },
     },
+    "/folder": {
+      template: "pages/folder.html",
+      title: "Folder | " + urlPageTitle,
+      description: "This is the folder page",
+      init: () => {
+        getChildren();
+        initImport();
+      },
+    },
     "/share": {
       template: "pages/share.html",
       title: "Share | " + urlPageTitle,
       description: "This is the share page",
-      share: () => {
+      init: () => {
         newSharedUser();
-        shareViaEmail();
         updatePermission();
+        updatePermissionAndNotify();
       },
     },
   };
@@ -94,8 +121,6 @@ $(document).ready(() => {
     document.getElementById("content").innerHTML = html;
 
     if (route.init) route.init();
-    if (route.share) route.share();
-    if (route.docs) route.docs();
 
     // set the title of the document to the title of the route
     document.title = route.title;
@@ -110,3 +135,5 @@ $(document).ready(() => {
   // call the urlLocationHandler function to handle the initial url
   urlLocationHandler();
 });
+
+export { redirectToDoc, redirect };

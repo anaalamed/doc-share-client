@@ -43,6 +43,10 @@ const update = (updateData) => {
   }
 };
 
+//start = input.prop("selectionStart");
+//end = input.prop("selectionEnd");
+//let input = $("#main-doc-content");
+
 var $temp = $("<input>");
 var $url = $(location).attr("href");
 
