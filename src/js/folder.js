@@ -35,12 +35,7 @@ const getChildren = (id) => {
         li.setAttribute("type", `${inode.type}`);
         li.setAttribute("name", `${inode.name}`);
         li.onclick = function () {
-          console.log(
-            "inode clicked " +
-              li.getAttribute("id") +
-              " type: " +
-              li.getAttribute("class")
-          );
+          console.log("inode clicked " + li.getAttribute("id") + " type: " + li.getAttribute("class"));
 
           if (li.getAttribute("type") == "DIR") {
             $("#ull").empty();
@@ -56,10 +51,7 @@ const getChildren = (id) => {
         let name = document.createElement("span");
         //let type = document.createElement("span");
         let icon = document.createElement("i");
-        icon.className =
-          li.getAttribute("type") == "DIR"
-            ? "bi bi-folder"
-            : "bi bi-file-earmark";
+        icon.className = li.getAttribute("type") == "DIR" ? "bi bi-folder" : "bi bi-file-earmark";
 
         name.innerHTML = `${inode.name}`;
         //type.innerHTML = `${inode.type}`;
