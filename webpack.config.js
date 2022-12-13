@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/js/index.js",
@@ -37,24 +36,4 @@ module.exports = {
     compress: true,
     port: 9000,
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      inject: "body",
-      template: "./dist/index.html",
-      filename: "index.html",
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-      },
-    }),
-
-    // new HtmlWebpackPlugin({
-    //   template: "./dist/signup.html",
-    //   filename: "signup.html",
-    //   minify: {
-    //     removeComments: true,
-    //     collapseWhitespace: true,
-    //   },
-    // }),
-  ],
 };

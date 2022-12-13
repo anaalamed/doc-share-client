@@ -1,11 +1,10 @@
 import $ from "jquery";
 import { createUser, loginUser, login } from "./rest";
 
-
 const initRegistration = () => {
   console.log("init registration ");
   // -------------------- registration -------------------------------
-  $(document).on("submit", "#btnSignup", function (event) {
+  $(document).on("click", "#btnSignup", (event) => {
     console.log("registration");
     event.preventDefault();
 
